@@ -16,11 +16,11 @@
         android:layout_height="wrap_content"
         android:text="Calculadora IMC"
         android:textSize="40dp"
-
+        android:textColor="@color/purple_500"
          />
     <EditText
         android:id="@+id/altura"
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Altura"
         android:inputType="numberDecimal"
@@ -28,7 +28,7 @@
         />
     <EditText
         android:id="@+id/peso"
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Peso"
         android:inputType="numberDecimal"
@@ -36,7 +36,7 @@
         />
     <Button
         android:id="@+id/calcular"
-        android:layout_width="120dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Calcular"
         android:layout_marginTop="32dp"
