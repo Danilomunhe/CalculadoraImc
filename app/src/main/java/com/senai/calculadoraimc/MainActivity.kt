@@ -34,7 +34,12 @@ class MainActivity : AppCompatActivity() {
                 val imc = calcularImc(peso, altura)
                 resultado.text = statusImc(imc)
 
-
+                if(imc > 18.5 && imc < 24.9)
+                    resultado.setTextColor(Color.GREEN)
+                else if(imc >=40)
+                    resultado.setTextColor(Color.RED)
+                else
+                    resultado.setTextColor(Color.BLUE)
             }
 
 
