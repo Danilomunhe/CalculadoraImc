@@ -8,43 +8,50 @@ import android.widget.EditText
 import android.widget.TextView
 import java.text.DecimalFormat
 
+private lateinit var pesoEditText: EditText
+private lateinit var alturaEditText: EditText
+val decimal = DecimalFormat("#.##")
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val calcular = findViewById<Button>(R.id.calcular)
-        val decimal = DecimalFormat("#.##")
+
 
         calcular.setOnClickListener() {
-            val peso = findViewById<EditText>(R.id.peso).text.toString().toDouble()
-            val altura = findViewById<EditText>(R.id.altura).text.toString().toDouble()
-            val resultado = findViewById<TextView>(R.id.resultado)
-            val imc = peso / (altura * altura)
+
+            pesoEditText = findViewById(R.id.peso)
+            alturaEditText = findViewById(R.id.altura)
+
+            if (validarCampos()) {
+                val peso = pesoEditText.text.toString().toDouble()
+                val altura = alturaEditText.text.toString().toDouble()
+                val resultado = findViewById<TextView>(R.id.resultado)
+                //val imc = peso / (altura * altura)
+
+                val imc = calcularImc(peso, altura)
+                resultado.text = statusImc(imc)
 
 
+            }
 
-            if (imc < 18.5) {
-                resultado.text =
-                    "Seu imc é: " + decimal.format(imc) + "\n" + "Status: Abaixo do Peso"
-                resultado.setTextColor(Color.RED)
-            }else if (imc > 18.5 && imc < 24.9){
-                resultado.text = "Seu imc é: " + decimal.format(imc) + "\n" + "Status: Peso normal"
-                resultado.setTextColor(Color.GREEN)
-            }else if(imc>25 && imc <29.9){
-                resultado.text = "Seu imc é: " + decimal.format(imc) + "\n" + "Status: Sobrepeso"
-                resultado.setTextColor(Color.YELLOW)
-            }else if(imc>30 && imc <=34.9){
-                resultado.text = "Seu imc é: " + decimal.format(imc) + "\n" + "Status: Obesidade Grau I"
-                resultado.setTextColor(Color.YELLOW)
-            }else if(imc>35 && imc <=39.9){
-                resultado.text = "Seu imc é: " + decimal.format(imc)  + "\n" + "Status: Obesidade Grau II"
-                resultado.setTextColor(Color.YELLOW)
-            }else {
-                resultado.text =
-                "Seu imc é: " + decimal.format(imc) + "\n" + "Status: Obesidade Grau III (Mórbita)"
-                resultado.setTextColor(Color.RED)
+
         }
+    }
+
+
+    private fun validarCampos(): Boolean {
+        var noError = true
+        if (pesoEditText.text.isBlank()) {
+            pesoEditText.setError("Informe seu peso")
+            noError = false
         }
+        if (alturaEditText.text.isBlank()) {
+            alturaEditText.setError("Informe sua altura")
+            noError = false
+        }
+        return noError
     }
 }
