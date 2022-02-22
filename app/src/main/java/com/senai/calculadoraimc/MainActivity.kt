@@ -1,5 +1,6 @@
 package com.senai.calculadoraimc
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,18 +29,15 @@ class MainActivity : AppCompatActivity() {
             if (validarCampos()) {
                 val peso = pesoEditText.text.toString().toDouble()
                 val altura = alturaEditText.text.toString().toDouble()
-                val resultado = findViewById<TextView>(R.id.resultado)
                 //val imc = peso / (altura * altura)
 
                 val imc = calcularImc(peso, altura)
-                resultado.text = statusImc(imc)
 
-                if(imc > 18.5 && imc < 24.9)
-                    resultado.setTextColor(Color.GREEN)
-                else if(imc >=40)
-                    resultado.setTextColor(Color.RED)
-                else
-                    resultado.setTextColor(Color.BLUE)
+                val intent = Intent(this, ResultadoImcActivity::class.java)
+                intent.putExtra("peso", peso.toString())
+                intent.putExtra("altura", altura.toString())
+                intent.putExtra("status", statusImc(imc))
+                startActivity(intent)
             }
 
 

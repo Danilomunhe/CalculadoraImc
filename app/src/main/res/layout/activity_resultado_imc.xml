@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultadoImcActivity"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado IMC"
+        android:textSize="48sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:text="Peso"
+            style="@style/label" />
+
+        <TextView
+            android:id="@+id/peso"
+            style="@style/campos" />
+
+        <TextView
+            android:text="Altura"
+            style="@style/label" />
+
+        <TextView
+            android:id="@+id/altura"
+            style="@style/campos" />
+
+        <TextView
+            android:text="Status"
+            style="@style/label" />
+
+        <TextView
+            android:id="@+id/status"
+            style="@style/campos" />
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

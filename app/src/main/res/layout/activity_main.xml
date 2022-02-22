@@ -41,13 +41,6 @@
         android:text="Calcular"
         android:layout_marginTop="32dp"
         />
-    <TextView
-        android:id="@+id/resultado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Resultado"
-        android:textSize="40dp"
-        android:layout_marginTop="32dp"
-        />
+
 
 </LinearLayout>
